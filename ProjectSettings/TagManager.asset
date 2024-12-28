@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Sub Decoration
+  - Floor
+  - Over Floor
+  - Table
+  - Mat
+  - Decoration
+  - Game Decoration
+  - Game Decoration Effect
+  - Game Effect
+  - Game UI
+  - Game UI Effect
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Sub Decoration
+    uniqueID: 2572128401
+    locked: 0
+  - name: Floor
+    uniqueID: 2479277611
+    locked: 0
+  - name: Over Floor
+    uniqueID: 2906100553
+    locked: 0
+  - name: Table
+    uniqueID: 310219863
+    locked: 0
+  - name: Mat
+    uniqueID: 4083325109
+    locked: 0
+  - name: Decoration
+    uniqueID: 236465515
+    locked: 0
+  - name: Game Decoration
+    uniqueID: 1270606511
+    locked: 0
+  - name: Game Decoration Effect
+    uniqueID: 3471320653
+    locked: 0
+  - name: Game Effect
+    uniqueID: 888769481
+    locked: 0
+  - name: Game UI
+    uniqueID: 1586444111
+    locked: 0
+  - name: Game UI Effect
+    uniqueID: 2950580867
+    locked: 0
+  m_RenderingLayers:
+  - Default
