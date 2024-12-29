@@ -74,5 +74,8 @@ TagManager:
   - name: Game UI Effect
     uniqueID: 2950580867
     locked: 0
+  - name: Border
+    uniqueID: 1130587297
+    locked: 0
   m_RenderingLayers:
   - Default
