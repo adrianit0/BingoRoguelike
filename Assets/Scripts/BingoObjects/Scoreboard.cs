@@ -4,11 +4,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace BingoObjects
-{
-    public class Scoreboard : BingoObject
-    {
-
+namespace BingoObjects {
+    public class Scoreboard : BingoObject {
         private int score = 0;
         private string text = "";
 
@@ -19,74 +16,50 @@ namespace BingoObjects
         public bool allowExceedingLimit = false;
 
 
-        public void Draw(string text)
-        {
-
+        public void Draw(string text) {
             scoreText.text = text;
 
             this.text = text;
         }
 
-        public void DrawNumber()
-        {
-            //TODO -> mejorar esto
-
-            text = score.ToString();
-
+        public void DrawNumber() {
+            DrawNumber(score);
         }
 
-        public void DrawNumber(int number)
-        {
-
-            if (text.Length > 0)
-            {
-                text = "";
-            }
-
+        public void DrawNumber(int number) {
             int numberCharacters = number.ToString().Length;
-            scoreText.text = allowExceedingLimit && numberCharacters > maxNumbers ?
-                shadowText.text.Replace("8", "9") : number.ToString();
+            scoreText.text = allowExceedingLimit && numberCharacters > maxNumbers
+                ? shadowText.text.Replace("8", "9")
+                : number.ToString();
 
             score = number;
             text = number.ToString();
         }
 
-        public void Plus(int amount)
-        {
-
-            score += amount;
-            DrawNumber();
-
+        public void Plus(int amount) {
+            DrawNumber(score + amount);
         }
 
-        public IEnumerator Plus(int amount, int timeToSpend)
-        {
-
+        public IEnumerator Plus(int amount, int timeToSpend) {
             // TODO
             yield return 0;
         }
 
-        public int GetScore()
-        {
+        public int GetScore() {
             return score;
         }
 
-        public string GetText()
-        {
+        public string GetText() {
             return text;
         }
 
-        public void ClearScore()
-        {
+        public void ClearScore() {
             DrawNumber(0);
         }
 
-        public IEnumerator ClearScore(int timeToSpend)
-        {
+        public IEnumerator ClearScore(int timeToSpend) {
             // TODO
             yield return 0;
         }
-
-
     }
 }
