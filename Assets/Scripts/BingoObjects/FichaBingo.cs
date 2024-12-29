@@ -20,6 +20,11 @@ namespace BingoObjects {
         private string _number;
         private int _score;
         private int _multi;
+        
+        
+        // TODO: Configuración de la tienda
+        public bool canBeSoldInStore = true;
+        public int price = 0;
 
         public void Init(string number, int score, int multi) {
             SetNumber(number);
