@@ -7,7 +7,7 @@ using Util;
 namespace GameComponents {
     
     [System.Serializable]
-    public class BingoList : IGameComponent {
+    public class BingoHistoricalManager : IGameComponent {
     
         public GameObject panel;
 
