@@ -7,7 +7,7 @@ using Util;
 namespace GameComponents {
     
     [System.Serializable]
-    public class ShopList : IGameComponent {
+    public class ShopManager : IGameComponent {
 
         public GameObject panel;
 

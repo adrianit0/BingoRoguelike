@@ -8,7 +8,7 @@ using UnityEngine.SocialPlatforms.Impl;
 namespace GameComponents {
     
     [System.Serializable]
-    public class ScoreboardList : IGameComponent {
+    public class ScoreboardManager : IGameComponent {
 
         public Scoreboard scoreboardScore;
         public Scoreboard scoreboardObjetive;
