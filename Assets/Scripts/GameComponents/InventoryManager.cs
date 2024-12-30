@@ -8,7 +8,7 @@ using Util;
 namespace GameComponents {
     
     [System.Serializable]
-    public class InventoryList : IGameComponent {
+    public class InventoryManager : IGameComponent {
 
         public GameObject panel;
 

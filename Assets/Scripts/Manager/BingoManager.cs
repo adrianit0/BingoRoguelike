@@ -8,10 +8,10 @@ using Util;
 namespace Manager {
     public class BingoManager : MonoBehaviour {
 
-        public InventoryList inventoryList;
-        public ShopList shopList;
-        public BingoList bingoList;
-        public ScoreboardList scoreboardList;
+        public InventoryManager inventoryManager;
+        public ShopManager shopManager;
+        public BingoHistoricalManager bingoHistoricalManager;
+        public ScoreboardManager scoreboardManager;
     
         private List<IGameComponent> _includesBingo;
     
@@ -19,10 +19,10 @@ namespace Manager {
             _includesBingo = new List<IGameComponent>() {
                 // Lista de todos los Componentes, para ejecutarse de una sola vez.
                 // Poner en orden ya que siempre se ejecutará en ese ordén
-                inventoryList,
-                shopList,
-                bingoList,
-                scoreboardList
+                inventoryManager,
+                shopManager,
+                bingoHistoricalManager,
+                scoreboardManager
             };
         
         
@@ -35,11 +35,11 @@ namespace Manager {
         }
 
         public void OpenCloseInventory() {
-            inventoryList.OpenClose();
+            inventoryManager.OpenClose();
         }
 
         public void OpenCloseShop() {
-            shopList.OpenClose();
+            shopManager.OpenClose();
         }
     }
 }
