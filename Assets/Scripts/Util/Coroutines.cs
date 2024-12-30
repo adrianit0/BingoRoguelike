@@ -1,98 +1,101 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Util {
     public class Coroutines {
 
-        private static bool pausado = false;
+        private static bool _pause = false;
 
-        // TODO: Esto no debería ir aquí
-        public static GameObject pantallaPausa = null; // GameObject.Find(Constants.NOMBRE_MARCO_PAUSA);
-
-        public static void mostrar(bool estado) {
-            pantallaPausa.transform.position = new Vector3(estado ? 0 : -20, pantallaPausa.transform.position.y,
-                pantallaPausa.transform.position.z);
+        // TODO: Esto no debería ir aquí...
+        private static readonly GameObject PauseScreen = null; // GameObject.Find(Constants.NOMBRE_MARCO_PAUSA);
+        
+        // TODO: Mejorar esto
+        public static void ShowPauseScreen(bool estado) {
+            PauseScreen.transform.position = new Vector3(estado ? 0 : -20, PauseScreen.transform.position.y,
+                PauseScreen.transform.position.z);
         }
 
         public static bool PausarReanudar() {
-            if (pausado)
-                Reanudar();
+            if (_pause)
+                Resume();
             else
-                Pausar();
+                Pause();
 
-            return pausado;
+            return _pause;
         }
     
-        public static void Pausar() {
-            pausado = true;
-            mostrar(pausado);
+        public static void Pause() {
+            _pause = true;
+            ShowPauseScreen(_pause);
         }
 
-        public static void Reanudar() {
-            pausado = false;
-            mostrar(pausado);
+        public static void Resume() {
+            _pause = false;
+            ShowPauseScreen(_pause);
         }
 
-        public static void MoverGameobject(GameObject gameObject, Vector2 inicio, Vector2 fin, float duracion) {
-            CoroutineRunner.Start(MoverDeA(gameObject, inicio, fin, duracion, 0));
+        // TODO: Hacer un MoveGameObject que vaya por velocidad, no por tiempo
+        public static void MoveGameobject(GameObject gameObject, Vector2 start, Vector2 end, float duration) {
+            CoroutineRunner.StartManagedCoroutine(gameObject, MoveGameObjectAndReturn(gameObject, start, end, duration, 0));
         }
     
-        public static IEnumerator MoverGameobjectX(GameObject gameObject, float inicio, float fin, float duracion, float tiempoRegreso) {
-            IEnumerator coroutine = MoverDeA(gameObject,
+        public static IEnumerator MoveGameobjectX(GameObject gameObject, float inicio, float fin, float duracion) {
+            IEnumerator coroutine = MoveGameObjectAndReturn(gameObject,
                 new Vector3(inicio, gameObject.transform.position.y, gameObject.transform.position.z),
                 new Vector3(fin, gameObject.transform.position.y, gameObject.transform.position.z), duracion,
-                tiempoRegreso);
+                0);
         
-            CoroutineRunner.Start(coroutine);
+            CoroutineRunner.StartManagedCoroutine(gameObject, coroutine);
 
             return coroutine;
         }
 
-        public static IEnumerator Esperar1Frame() {
+        public static IEnumerator Wait1Frame() {
             do {
                 yield return null;
-            } while (pausado);
+            } while (_pause);
         }
 
-        public static IEnumerator EsperarSegundos(float segundos) {
-            float tiempoTranscurrido = 0;
-            while (tiempoTranscurrido < segundos) {
-                tiempoTranscurrido += Time.deltaTime;
-                yield return Esperar1Frame();
+        public static IEnumerator Wait(float seconds) {
+            float elapsedTime = 0;
+            while (elapsedTime < seconds) {
+                elapsedTime += Time.deltaTime;
+                yield return Wait1Frame();
             }
         }
 
-        public static void EjecutarCoroutine(IEnumerator coroutine) {
+        public static void ExecuteCoroutine (IEnumerator coroutine) {
             CoroutineRunner.Start(coroutine);
         }
     
-        public static void FinalizarCoroutine(IEnumerator coroutine) {
+        public static void StopCoroutine(IEnumerator coroutine) {
             CoroutineRunner.Stop(coroutine);
         }
 
-        private static IEnumerator MoverDeA(GameObject gameObject, Vector3 inicio, Vector3 fin, float duracion, float tiempoRegreso) {
+        private static IEnumerator MoveGameObjectAndReturn(GameObject gameObject, Vector3 start, Vector3 end, float duration, float returnTime) {
             Transform transform = gameObject.transform;
-            float tiempoTranscurrido = 0;
+            float elapsedTime = 0;
         
             // Mientras el tiempo transcurrido sea menor que la duración, seguimos interpolando
-            while (tiempoTranscurrido < duracion) {
+            while (elapsedTime < duration) {
                 // Interpolación lineal entre la posición inicial y final
-                transform.position = Vector3.Lerp(inicio, fin, tiempoTranscurrido / duracion);
+                transform.position = Vector3.Lerp(start, end, elapsedTime / duration);
 
                 // Incrementamos el tiempo transcurrido en cada frame
-                tiempoTranscurrido += Time.deltaTime;
+                elapsedTime += Time.deltaTime;
 
                 // Esperar hasta el siguiente frame
-                yield return Esperar1Frame();
+                yield return Wait1Frame();
             }
 
             // Asegurar que el GameObject llegue exactamente a la posición final
-            transform.position = fin;
+            transform.position = end;
 
-            if (tiempoRegreso > 0) {
-                yield return EsperarSegundos(tiempoRegreso);
-                yield return MoverDeA(gameObject, fin, inicio, duracion, 0);
+            if (returnTime > 0) {
+                yield return Wait(returnTime);
+                yield return MoveGameObjectAndReturn(gameObject, end, start, duration, 0);
             }
         }
     

@@ -6,14 +6,14 @@ namespace Util {
         // Constantes Genéricas 
         public static readonly Vector3 OutOfScreenPosition = new Vector3(30f, 0, 0);
         
-        // Lista bingo
+        // Manager bingo
         public const string BingoNumberListName = "BingoNumberList";
         public static readonly Vector3 BingoListInitialPosition = new Vector3(5.6f, 2.76f, 0);
         public static readonly Vector2 BingoListDifPos = new Vector2(0.4f, 0.4f);
         public static readonly Vector2 BingoListConstraints = new Vector2(8, 15);
         public const bool HorizontalOrder = false;
         
-        // Lista Inventario
+        // Manager Inventario
         public const string InventoryListName = "Ficha";
         public const string InventoryBoxName = "Box";
         public static readonly Vector3 InventoryListInitialPosition = new Vector3(-7.8f, 4.1f, 0);
@@ -23,7 +23,11 @@ namespace Util {
         public static readonly Vector2 InventoryClosedPosition = new Vector3(0, 3.5f, 0);
         public static readonly Vector2 InventoryOpenPosition = Vector3.zero;
         
-        // Lista Cartón
+        // Manager Tienda
+        public static readonly Vector2 ShopClosedPosition = new Vector3(3.5f, 0, 0);
+        public static readonly Vector2 ShopOpenPosition = Vector3.zero;
+        
+        // Manager Cartón
         public static readonly int[] LaneMultiplier = new[] { 0, 0, 1, 3, 5, 7, 10, 14, 20, 50, 100, 200, 500, 1000 };
         
     

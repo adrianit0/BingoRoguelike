@@ -3,11 +3,13 @@ using GameComponents;
 using Structure;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Util;
 
 namespace Manager {
     public class BingoManager : MonoBehaviour {
 
         public InventoryList inventoryList;
+        public ShopList shopList;
         public BingoList bingoList;
         public ScoreboardList scoreboardList;
     
@@ -18,6 +20,7 @@ namespace Manager {
                 // Lista de todos los Componentes, para ejecutarse de una sola vez.
                 // Poner en orden ya que siempre se ejecutará en ese ordén
                 inventoryList,
+                shopList,
                 bingoList,
                 scoreboardList
             };
@@ -28,7 +31,15 @@ namespace Manager {
         }
 
         void Update() {
-        
+            // TODO: Algo habrá que poner aquí...
+        }
+
+        public void OpenCloseInventory() {
+            inventoryList.OpenClose();
+        }
+
+        public void OpenCloseShop() {
+            shopList.OpenClose();
         }
     }
 }

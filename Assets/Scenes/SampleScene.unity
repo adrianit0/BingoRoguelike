@@ -26326,7 +26326,19 @@ MonoBehaviour:
   Renderer: {fileID: 1249237950}
   OnClickDown:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1720182119}
+        m_TargetAssemblyTypeName: Manager.BingoManager, Assembly-CSharp
+        m_MethodName: AbrirCerrarInventario
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnClickUp:
     m_PersistentCalls:
       m_Calls: []
@@ -35911,6 +35923,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryList:
     panel: {fileID: 1536257965}
+  shopList:
+    panel: {fileID: 2026209433}
   bingoList:
     panel: {fileID: 1042199745}
   scoreboardList:

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 namespace BingoObjects {
+    [RequireComponent(typeof(BoxCollider2D))]
     public class GenericBingoButton : BingoButtonNonPoolableHandler {
 
         public UnityEvent OnClickDown;
@@ -23,43 +24,35 @@ namespace BingoObjects {
         private bool pressedRightDown = false;
 
         private void ClickDown() {
-            Debug.Log("ClickDown");
             OnClickDown?.Invoke();
         }
 
         private void ClickUp() {
-            Debug.Log("ClickUp");
             OnClickUp?.Invoke();
         }
 
         private void ClickStay() {
-            // Debug.Log("ClickStay");
             OnClickStay?.Invoke();
         }
 
         private void RightClickDown() {
-            Debug.Log("RightClickDown");
             OnRightClickDown?.Invoke();
         }
 
         private void RightClickUp() {
-            Debug.Log("RightClickUp");
             OnRightClickUp?.Invoke();
         }
 
         private void RightClickStay() {
-            // Debug.Log("RightClickStay");
             OnRightClickStay?.Invoke();
         }
 
         public void OnMouseEnter() {
-            Debug.Log("HoverEnter");
             holdStay = true;
             OnHoverDown?.Invoke();
         }
 
         public void OnMouseExit() {
-            Debug.Log("HoverExit");
             holdStay = false;
             OnHoverUp?.Invoke();
         }

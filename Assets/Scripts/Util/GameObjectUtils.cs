@@ -50,5 +50,9 @@ namespace Util {
         public static void IncludeInPool(BingoObject obj) {
             // TODO: Crear sistema de pool
         }
+        
+        public static float Distance(Vector2 positionA, Vector2 positionB) {
+            return Vector2.Distance(positionA, positionB);
+        }
     }
 }

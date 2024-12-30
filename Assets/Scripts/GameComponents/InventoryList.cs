@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using BingoObjects;
 using Structure;
@@ -12,12 +13,21 @@ namespace GameComponents {
         public GameObject panel;
 
         private List<FichaBingo> fichas;
+        
+        private bool isOpen = false;
 
 
         public void InitComponent() {
             fichas = new List<FichaBingo>();
             
             CreateStarterTokens();
+        }
+
+        public void OpenClose() {
+            Vector3 startPos = panel.transform.position;
+            Vector3 endPos = isOpen ? Constants.InventoryClosedPosition : Constants.InventoryOpenPosition;
+            Coroutines.MoveGameobject(panel, startPos, endPos, 0.25f); // TODO: Cambiar duracion por velocidad, y que este dependa del valor seleccionado el usuario en ajustes
+            isOpen = !isOpen;
         }
 
         private void SortInventory() {
@@ -75,6 +85,7 @@ namespace GameComponents {
             SortInventory();
             
             panel.transform.position = Constants.InventoryClosedPosition;
+            isOpen = false;
         }
 
         private FichaBingo CreateNewTokenAndIncludeIntoInventory(string number, int score, int multi) {
