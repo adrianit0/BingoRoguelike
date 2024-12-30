@@ -8,6 +8,8 @@ namespace Enums {
         GetBingo,               // Obtienes todos los números del cartón.
         GetDraw,                // Obtienes una tirada extra
         GetGold,                // Obtienes oro
+        StartDraw,              // Empieza una tirada de bola
+        EndDraw,                // Finaliza una tirada de bola
         
         // TODO: Ir incluyendo eventos a medida que se vayan necesitando
     }

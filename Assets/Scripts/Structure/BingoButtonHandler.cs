@@ -5,14 +5,6 @@ using UnityEngine.Events;
 namespace Structure {
     [RequireComponent(typeof(BoxCollider2D))]
     public abstract class BingoButtonHandler : BingoObject, IClickableComponent {
-
-        public SpriteRenderer Renderer;
-        
-        // TODO: Configuración de la tienda
-        public bool canBeBoughtInstore = true;
-        public bool canBeSoldInStore = true;
-        public int storePrice = 0;  // Precio de compra
-        public int sellPrice = 0;   // Precio de venta (Por defecto un 70% del precio de compra)
         
         // Todos los eventos permitidos para ser clickados
         private Action _onClickDown;

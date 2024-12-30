@@ -11,17 +11,18 @@ namespace GameComponents {
     
         public GameObject panel;
 
-        private List<NumeroBingo> numbers;
+        private List<BingoNumber> numbers;
 
 
         public void InitComponent() {
+            // TODO: Editar esto en un futuro
             string[] extras = new[] { "\ud83d\udc14", "\u2764\ufe0f", "\ud83e\udd75", "\ud83d\ude31", "\ud83d\ude28", "\ud83d\udca9" };
-            IncludeNumbersInBingo(100, extras);
+            IncludeNumbersInBingo(90, extras);
         }
 
-        private void IncludeNumbersInBingo(int max = 100, string[] extras = null) {
+        private void IncludeNumbersInBingo(int max = 90, string[] extras = null) {
             ClearPanel();
-            numbers = new List<NumeroBingo>();
+            numbers = new List<BingoNumber>();
             Vector2 constraints = Constants.HorizontalOrder ?   
                 new Vector2(Constants.BingoListConstraints.y, Constants.BingoListConstraints.x) 
                 : Constants.BingoListConstraints;
@@ -53,18 +54,21 @@ namespace GameComponents {
                         break; // TODO: Mejorable esto
                     }
                 }
+                if (numberOfInstances >= numberValuesTest.Count) {
+                    break; // TODO: Mejorable esto
+                }
             }
         }
 
-        private NumeroBingo InstantiateBingo(string number, Vector2 position) {
+        private BingoNumber InstantiateBingo(string number, Vector2 position) {
             GameObject bingoNumber = GameObjectUtils.InstantiatePrefab(Constants.BingoNumberListName, 
                 "Number #"+number,position, panel.transform);
-            NumeroBingo bingoObject = bingoNumber.GetComponent<NumeroBingo>();
-            bingoObject.texto.text = number.ToString();
+            BingoNumber bingoNumberObject = bingoNumber.GetComponent<BingoNumber>();
+            bingoNumberObject.text.text = number;
                 
-            numbers.Add(bingoObject);
+            numbers.Add(bingoNumberObject);
             
-            return bingoObject;
+            return bingoNumberObject;
         }
     
         private void ClearPanel() {

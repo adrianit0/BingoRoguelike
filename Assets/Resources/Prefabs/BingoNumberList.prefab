@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4079277497115445026}
   - component: {fileID: 722832031542353293}
   m_Layer: 0
-  m_Name: Texto
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,4 +278,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolName: numeroLista
-  texto: {fileID: 722832031542353293}
+  text: {fileID: 722832031542353293}

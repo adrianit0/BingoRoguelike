@@ -12,7 +12,7 @@ namespace GameComponents {
         public GameObject panel;
 
         // TODO: Expandir a otros tipos de items en venta
-        private List<FichaBingo> ventaFichas;
+        private List<BingoToken> ventaFichas;
         
         // TODO: Descomentar o eliminar cuando se piense correctamente que hacer con esto
         // private List<FichaBingo> ventaItems;
@@ -23,7 +23,7 @@ namespace GameComponents {
         private bool isOpen = false;
 
         public void InitComponent() {
-            ventaFichas = new List<FichaBingo>();
+            ventaFichas = new List<BingoToken>();
             
             // CreateStarterTokens();
         }
@@ -59,18 +59,18 @@ namespace GameComponents {
             panel.transform.position = Constants.InventoryClosedPosition;
         }
 
-        private FichaBingo CreateNewTokenAndIncludeIntoShop(string number, int score, int multi, int price) {
+        private BingoToken CreateNewTokenAndIncludeIntoShop(string number, int score, int multi, int price) {
             // TODO: Mejorar esto, ya que es un comportamiento que se usará en inventario + tienda + Algunos items podrá crear otros items
             
             GameObject bingoNumber = GameObjectUtils.InstantiatePrefab(Constants.InventoryListName, 
                 "Ficha #"+number, Constants.OutOfScreenPosition, panel.transform);
-            FichaBingo fichaObject = bingoNumber.GetComponent<FichaBingo>();
+            BingoToken @object = bingoNumber.GetComponent<BingoToken>();
 
-            fichaObject.Init(number,score,multi);
+            @object.Init(number,score,multi);
             // TODO: Incluir Precio
                 
-            ventaFichas.Add(fichaObject);
-            return fichaObject;
+            ventaFichas.Add(@object);
+            return @object;
         }
     
         private void ClearPanel() {
