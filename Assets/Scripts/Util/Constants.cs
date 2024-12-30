@@ -30,6 +30,9 @@ namespace Util {
         // Manager Cartón
         public static readonly int[] LaneMultiplier = new[] { 0, 0, 1, 3, 5, 7, 10, 14, 20, 50, 100, 200, 500, 1000 };
         
+        // Manager Depuracion
+        public static readonly Vector2 CheatClosedPosition = new Vector3(0, -4.5f, 0);
+        public static readonly Vector2 CheatOpenPosition = Vector3.zero;
     
         // Base name for the prefabs paths
         public const string PrefabBasePath = "Prefabs";
