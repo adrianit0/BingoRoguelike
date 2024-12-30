@@ -95,9 +95,7 @@ namespace GameComponents {
                 "Ficha #"+number, Constants.OutOfScreenPosition, panel.transform);
             FichaBingo fichaObject = bingoNumber.GetComponent<FichaBingo>();
 
-            fichaObject.SetNumber(number);
-            fichaObject.SetScore(score);
-            fichaObject.SetMulti(multi);
+            fichaObject.Init(number, score, multi);
                 
             fichas.Add(fichaObject);
             return fichaObject;
