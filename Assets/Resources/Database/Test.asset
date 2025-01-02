@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93996f0e15544dc3920bdea5de605ec0, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  tokenTemplate:
+  - tier: 0
+    name: Test
+    description: Esto es una prueba inicial
+    canBeBoughtInstore: 1
+    canBeSoldInStore: 1
+    storePrice: 1
+    sellPrice: 0
+    prefab: {fileID: 0}
+    number: 1
+    score: 0
+    multi: 0
+  - tier: 1
+    name: test2
+    description: 
+    canBeBoughtInstore: 0
+    canBeSoldInStore: 0
+    storePrice: 1
+    sellPrice: 0
+    prefab: {fileID: 0}
+    number: 2
+    score: 0
+    multi: 0
